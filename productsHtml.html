@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' href='product.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    <title>Products</title>
+    <style>
+        .add-product-form {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .add-product-form input {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .add-product-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-product-form button:hover {
+            background-color: #45a049;
+        }
+
+        .action-btn {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class='menu'>
+        <ul>
+            <li class='profile'>
+                <div class='img-box'>
+                    <img src='sanji.png' alt='profile' height=60px width=50px>
+                </div> 
+                <h2>user foulen</h2>
+            </li> 
+            <li>
+                <a class="active" href="dashboard.html">
+                    <i class="fas fa-home"></i>
+                    <p>dashboard</p>
+                </a>
+            </li>
+            <li>
+                <a href="productsHtml.html">
+                    <i class="fas fa-table"></i>
+                    <p>products</p>
+                </a>
+            </li>
+            <li>
+                <a href="calculator.html">
+                    <i class="fas fa-chart-pie"></i>
+                    <p>Calculator</p>
+                </a>
+            </li>
+            <li>
+                <a href="Budget.html">
+                    <i class="fas fa-pen"></i>
+                    <p>Budget Manager</p>
+                </a>
+            </li>
+            <li>
+                <a href="support.html">
+                    <i class="fas fa-cog"></i>
+                    <p>Support</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class='content'>
+        <!-- Add Product Form -->
+        <div class="add-product-form">
+            <h2>Add New Product</h2>
+            <form id="product-form">
+                <input type="text" id="product-name" placeholder="Product Name" required>
+                <input type="number" id="product-price" placeholder="Price" required>
+                <input type="number" id="product-stock" placeholder="Stock Quantity" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+
+        <!-- Boxes Section -->
+        <div class='data-info'>
+            <div class='box'>
+                <i class='fas fa-table'></i>
+                <div class='data'>
+                    <p>Products Number :</p>
+                    <span id="product-count">0</span>
+                </div>
+            </div>
+            <div class='box'>
+                <i class='fas fa-dollar'></i>
+                <div class='data'>
+                    <p>Stock Cost:</p>
+                    <span id="total-cost">0 Dollars</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div class='title-info2'>
+            <p>Products</p>
+            <i class='fas fa-table'></i>
+        </div>
+
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic product rows go here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const form = document.getElementById('product-form');
+        const productTable = document.getElementById('product-table').getElementsByTagName('tbody')[0];
+        const productCountElement = document.getElementById('product-count');
+        const totalCostElement = document.getElementById('total-cost');
+
+        let totalProducts = 0;
+        let totalCost = 0;
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('product-name').value;
+            const price = parseFloat(document.getElementById('product-price').value);
+            const stock = parseInt(document.getElementById('product-stock').value);
+
+            const row = productTable.insertRow();
+            row.insertCell(0).textContent = name;
+            row.insertCell(1).textContent = `$${price.toFixed(2)}`;
+            row.insertCell(2).textContent = stock;
+
+            const actionCell = row.insertCell(3);
+            const editBtn = document.createElement('button');
+            editBtn.textContent = 'Edit';
+            editBtn.className = 'action-btn edit-btn';
+            editBtn.onclick = () => {
+                const newName = prompt("Edit product name:", name);
+                const newPrice = prompt("Edit product price:", price);
+                const newStock = prompt("Edit stock quantity:", stock);
+
+                if (newName && newPrice && newStock) {
+                    totalProducts -= stock;
+                    totalCost -= price * stock;
+
+                    row.cells[0].textContent = newName;
+                    row.cells[1].textContent = `$${parseFloat(newPrice).toFixed(2)}`;
+                    row.cells[2].textContent = parseInt(newStock);
+
+                    totalProducts += parseInt(newStock);
+                    totalCost += parseFloat(newPrice) * parseInt(newStock);
+
+                    productCountElement.textContent = totalProducts;
+                    totalCostElement.textContent = `$${totalCost.toFixed(2)}`;
+                }
+            };
+
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Remove';
+            removeBtn.className = 'action-btn remove-btn';
+            removeBtn.onclick = () => {
+                totalProducts -= stock;
+                totalCost -= price * stock;
+                productTable.removeChild(row);
+                productCountElement.textContent = totalProducts;
+                totalCostElement.textContent = `$${totalCost.toFixed(2)}`;
+            };
+
+            actionCell.appendChild(editBtn);
+            actionCell.appendChild(removeBtn);
+
+            totalProducts += stock;
+            totalCost += price * stock;
+            productCountElement.textContent = totalProducts;
+            totalCostElement.textContent = `$${totalCost.toFixed(2)}`;
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+/* General Styles */
+* {
+    padding: 0;
+    margin: 0;
+    color: black;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: white; /* Change the body background to white */
+    display: flex;
+}
+
+/* Menu Styles */
+.menu {
+    background-color: green;
+    width: 50px;
+    height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.menu:hover {
+    width: 260px;
+}
+
+ul {
+    list-style: none;
+    position: relative;
+    height: 95%;
+}
+
+ul li a {
+    display: block;
+    text-decoration: none;
+    background-color: blue;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    transition: 0.5s;
+}
+
+ul li a:hover, .active, .data-info .box:hover {
+    background-color: grey;
+}
+
+.log-out {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.log-out a {
+    background-color: red;
+}
+
+ul li a i {
+    font-size: 20px;
+}
+
+/* Content Styles */
+.content {
+    background-color: black;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Title Section */
+.title-info2 {
+    background-color: blue;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.title-info2 p {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.title-info2 i {
+    font-size: 36px;
+}
+
+/* Calculator Box Styles */
+.calculator-box {
+    background-color: white; /* Change to white if you want the box itself white */
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-box label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.calculator-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.calculator-box button {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.calculator-box button:hover {
+    background-color: darkblue;
+}
+
+.calculator-box p {
+    font-size: 18px;
+}
+
+.calculator-box span {
+    font-weight: bold;
+}

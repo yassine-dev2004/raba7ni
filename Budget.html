@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="cssBudget.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="scriptProduct.js"></script>
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li class="profile">
+                <div class="img-box">
+                    <img src="sanji.png" alt="profile" height="60px" width="50px">
+                </div>
+                <h2>user foulen</h2>
+            </li>
+            <li>
+                <a class="active" href="dashboard.html">
+                    <i class="fas fa-home"></i>
+                    <p>dashboard</p>
+                </a>
+            </li>
+            <li>
+                <a href="productsHtml.html">
+                    <i class="fas fa-table"></i>
+                    <p>products</p>
+                </a>
+            </li>
+            <li>
+                <a href="calculator.html">
+                    <i class="fas fa-chart-pie"></i>
+                    <p>Calculator</p>
+                </a>
+            </li>
+            <li>
+                <a class="active" href="budget.html">
+                    <i class="fas fa-pen"></i>
+                    <p>Budget Manager</p>
+                </a>
+            </li>
+            <li>
+                <a href="support.html">
+                    <i class="fas fa-cog"></i>
+                    <p>Support</p>
+                </a>
+            </li>
+           
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- Title Section -->
+        <div class="title-info2">
+            <p>Calculator</p>
+            <i class="fas fa-calculator"></i>
+        </div>
+
+        <!-- Calculator Box Section -->
+        <div class="calculator-box">
+            <div class="calculator">
+                <label for="total-budget">Total Budget (USD):</label>
+                <input type="number" id="total-budget" value="0">
+
+                <label for="marketing-expenses">Marketing Expenses (USD):</label>
+                <input type="number" id="marketing-expenses" value="0">
+
+                <label for="stock-expenses">Stock Expenses (USD):</label>
+                <input type="number" id="stock-expenses" value="0">
+
+                <button id="calculate-profit">Calculate Total Profit</button>
+
+                <p>Total Profit: <span id="total-profit">0</span> USD</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle Total Profit Calculation
+        document.getElementById('calculate-profit').addEventListener('click', function() {
+            const totalBudget = parseFloat(document.getElementById('total-budget').value) || 0;
+            const marketingExpenses = parseFloat(document.getElementById('marketing-expenses').value) || 0;
+            const stockExpenses = parseFloat(document.getElementById('stock-expenses').value) || 0;
+
+            const totalExpenses = marketingExpenses + stockExpenses;
+            const totalProfit = totalBudget - totalExpenses;
+
+            // Update the total profit on the page
+            document.getElementById('total-profit').textContent = totalProfit.toFixed(2);
+        });
+    </script>
+
+    <script src="js/refreshproductPage.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' href='csspage.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    <script src="scriptProduct.js"></script>
+    <title> Dashboard </title>
+    <style>
+        /* Make all text white */
+        body {
+            color: white;  /* Make body text white */
+        }
+        
+        .support-info p {
+            color: white;  /* Make the support section text white */
+        }
+        
+        .support-info a {
+            color: lightblue;  /* Make the email link light blue */
+        }
+
+        .support-info a:hover {
+            text-decoration: underline;  /* Underline the email link on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class='menu'>
+        <ul>
+            <li class='profile'>
+                <div class='img-box'>
+                    <img src='sanji.png' alt='profile' height=60px width=50px >
+                </div> 
+                <h2> user foulen  </h2>
+            </li> 
+            <li>
+                <a class="active" href="dashboard.html">
+                    <i class="fas fa-home"></i>
+                    <p>dashboard</p>
+                </a>
+            </li>
+            
+            <li>
+                <a href="productshtml.html">
+                    <i class="fas fa-table"></i>
+                    <p>products</p>
+                </a>
+            </li>
+            
+            <li>
+                <a href="calculator.html">
+                    <i class="fas fa-chart-pie"></i>
+                    <p>Calculator</p>
+                </a>
+            </li>
+            <li>
+                <a href="Budget.html">
+                    <i class="fas fa-pen"></i>
+                    <p>Budget Manager </p>
+                </a>
+            </li>
+            
+            <li>
+               <a href="support.html">
+                    <i class="fas fa-cog"></i>
+                    <p>Support</p>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+
+    <div class='content'> 
+    
+        <!-- Support Section -->
+        <div class='title-info2'>
+            <p>Support</p>
+            <i class='fas fa-cogs'></i>
+        </div>
+        
+        <div class="support-info">
+            <p>If you have any issues or need assistance, please reach out to us via email:</p>
+            <p><strong>Email: <a href="mailto:rab7niecom@gmail.com">yassinemez@gmail.com</a></strong></p>
+        </div>
+        
+    </div>
+    <script src="js/refreshproductPage.js"></script>
+</body>
+</html>
